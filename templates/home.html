@@ -1,1 +1,113 @@
-<h1> Hello World </h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      font-family: 'Open Sans Condensed', sans-serif;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group input {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 8px;
+      font-size: 1.2em;
+    }
+
+    .btn-primary {
+      background-color: #34495e;
+      border: 0;
+      border-radius: 3px;
+      padding: 10px;
+      width: 100%;
+      font-size: 1.2em;
+    }
+
+    .prediction-text {
+      font-family: 'Arimo', sans-serif;
+      font-size: 1.2em;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="logo">Boston House Price Prediction</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control" name="CRIM" placeholder="CRIM" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="ZN" placeholder="ZN" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="INDUS" placeholder="INDUS" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="CHAS" placeholder="CHAS" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="NOX" placeholder="NOX" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="RM" placeholder="RM" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="Age" placeholder="Age" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="DIS" placeholder="DIS" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="RAD" placeholder="RAD" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="TAX" placeholder="TAX" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="PTRATIO" placeholder="PTRATIO" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="B" placeholder="B" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="LSTAT" placeholder="LSTAT" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">Predict</button>
+    </form>
+    <div class="prediction-text">
+      {% if prediction_text %}
+      The House price prediction is {{ prediction_text }}
+      {% endif %}
+    </div>
+  </div>
+</body>
+
+</html>
